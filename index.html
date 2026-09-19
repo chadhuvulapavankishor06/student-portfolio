@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #050b18;
+            color: white;
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(3, 8, 20, 0.95);
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid #17345f;
+        }
+
+        .logo {
+            color: #00bfff;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00bfff;
+        }
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 45px;
+            color: #00bfff;
+        }
+
+        .section-title span {
+            color: white;
+        }
+
+        /* HOME */
+
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 80% 30%, #063d70 0, transparent 30%),
+                #050b18;
+        }
+
+        .home-content {
+            max-width: 800px;
+        }
+
+        .home-content h3 {
+            font-size: 25px;
+            color: #00bfff;
+        }
+
+        .home-content h1 {
+            font-size: 55px;
+            margin: 10px 0;
+        }
+
+        .home-content h1 span {
+            color: #00bfff;
+        }
+
+        .home-content p {
+            color: #c8d4e8;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        .buttons {
+            margin-top: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 28px;
+            margin-right: 12px;
+            border-radius: 30px;
+            background: #00bfff;
+            color: #00111f;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px #00bfff;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #00bfff;
+            border: 2px solid #00bfff;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .profile-card {
+            background: #0a1428;
+            border: 1px solid #174d7a;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0,191,255,0.15);
+        }
+
+        .profile-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #00bfff, #0755b5);
+            font-size: 45px;
+            font-weight: bold;
+        }
+
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            color: #c8d4e8;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .info div {
+            background: #0a1428;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #00bfff;
+        }
+
+        /* EDUCATION */
+
+        .timeline {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .timeline-item {
+            background: #0a1428;
+            border-left: 4px solid #00bfff;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .timeline-item h3 {
+            color: #00bfff;
+        }
+
+        .timeline-item span {
+            color: #9bb1c9;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: #0a1428;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            border: 1px solid #173c65;
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: #00bfff;
+            box-shadow: 0 0 20px rgba(0,191,255,0.2);
+        }
+
+        .skill-card h3 {
+            color: #00bfff;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            color: #c8d4e8;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background: #0a1428;
+            padding: 28px;
+            border-radius: 15px;
+            border: 1px solid #173c65;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #00bfff;
+        }
+
+        .project-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .project-card h3 {
+            color: #00bfff;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #c8d4e8;
+        }
+
+        /* CERTIFICATES */
+
+        .certificates {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .certificate {
+            background: #0a1428;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #173c65;
+        }
+
+        .certificate h3 {
+            color: #00bfff;
+        }
+
+        /* ACHIEVEMENTS */
+
+        .achievement-box {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .achievement {
+            background: #0a1428;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00bfff;
+        }
+
+        /* CONTACT */
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+
+        .contact-info,
+        form {
+            background: #0a1428;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #173c65;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+            color: #c8d4e8;
+        }
+
+        .contact-info strong {
+            color: #00bfff;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            background: #050b18;
+            border: 1px solid #24527d;
+            color: white;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        form textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        form button {
+            border: none;
+            cursor: pointer;
+        }
+
+        /* SOCIAL */
+
+        .social {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .social a {
+            display: inline-block;
+            margin: 8px;
+            padding: 10px 18px;
+            border: 1px solid #00bfff;
+            border-radius: 20px;
+            color: #00bfff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            background: #00bfff;
+            color: #00111f;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #030711;
+            color: #9bb1c9;
+            border-top: 1px solid #17345f;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            nav {
+                display: none;
+            }
+
+            .about,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills,
+            .projects,
+            .certificates {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .home-content h1 {
+                font-size: 42px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 80px 5%;
+            }
+
+            .skills,
+            .projects,
+            .certificates,
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+            .home-content h1 {
+                font-size: 35px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+
+    <div class="logo">STUDENT PORTFOLIO</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<!-- HOME -->
+
+<section id="home">
+
+    <div class="home-content">
+
+        <h3>Hello, I'm</h3>
+
+        <h1>YOUR <span>NAME</span></h1>
+
+        <h3>Computer Science Student & Aspiring Developer</h3>
+
+        <p>
+            Welcome to my personal portfolio website.
+            I am a passionate student interested in programming,
+            web development, technology and software development.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#about" class="btn">
+                Explore My Portfolio
+            </a>
+
+            <a href="#contact" class="btn btn-outline">
+                Contact Me
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <h2 class="section-title">
+        About <span>Me</span>
+    </h2>
+
+    <div class="about">
+
+        <div class="profile-card">
+
+            <div class="profile-circle">
+                YOU
+            </div>
+
+            <h2 style="margin-top:20px;">
+                YOUR NAME
+            </h2>
+
+            <p style="color:#9bb1c9;">
+                B.Tech Student
+            </p>
+
+        </div>
+
+
+        <div class="about-text">
+
+            <h2>Student Profile</h2>
+
+            <p>
+                I am a motivated student who enjoys learning
+                programming, software development and modern
+                technologies. I am continuously improving my
+                technical and communication skills through
+                academic projects and practical learning.
+            </p>
+
+            <div class="info">
+
+                <div>
+                    <strong>Name:</strong> Your Name
+                </div>
+
+                <div>
+                    <strong>Course:</strong> B.Tech
+                </div>
+
+                <div>
+                    <strong>Branch:</strong> Computer Science
+                </div>
+
+                <div>
+                    <strong>Career Goal:</strong> Software Developer
+                </div>
+
+                <div>
+                    <strong>Languages:</strong> English
+                </div>
+
+                <div>
+                    <strong>Interests:</strong> Coding & Technology
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EDUCATION -->
+
+<section id="education">
+
+    <h2 class="section-title">
+        My <span>Education</span>
+    </h2>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <h3>B.Tech - Computer Science</h3>
+
+            <span>20XX - Present</span>
+
+            <p>
+                Studying computer science subjects including
+                programming, DBMS, operating systems,
+                cloud computing and data structures.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <h3>Intermediate / Higher Secondary</h3>
+
+            <span>20XX - 20XX</span>
+
+            <p>
+                Completed higher secondary education with
+                focus on mathematics, science and
+                computer-related subjects.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <h3>School Education</h3>
+
+            <span>20XX - 20XX</span>
+
+            <p>
+                Completed school education and developed
+                interest in technology and problem solving.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <h2 class="section-title">
+        My <span>Skills</span>
+    </h2>
+
+    <div class="skills">
+
+        <div class="skill-card">
+            <h3>Java</h3>
+            <p>Java programming and object-oriented programming.</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>Python</h3>
+            <p>Basic Python programming and data handling.</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>HTML & CSS</h3>
+            <p>Creating responsive and attractive websites.</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>SQL</h3>
+            <p>Database concepts, queries and SQL fundamentals.</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>Data Structures</h3>
+            <p>Arrays, linked lists, stacks, queues and algorithms.</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>Communication</h3>
+            <p>Communication, teamwork and presentation skills.</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>Leadership</h3>
+            <p>Team coordination and leadership qualities.</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>Problem Solving</h3>
+            <p>Logical thinking and programming problem solving.</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>Cloud Computing</h3>
+            <p>Basic knowledge of cloud computing and AWS.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <h2 class="section-title">
+        My <span>Projects</span>
+    </h2>
+
+    <div class="projects">
+
+        <div class="project-card">
+            <div class="project-icon">💻</div>
+            <h3>Student Portfolio</h3>
+            <p>
+                A responsive personal portfolio website
+                created using HTML and CSS.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <div class="project-icon">🎓</div>
+            <h3>Student Management System</h3>
+            <p>
+                A system for managing student information,
+                academic records and details.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <div class="project-icon">🌐</div>
+            <h3>University Portal</h3>
+            <p>
+                A web interface for university students
+                and academic services.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <div class="project-icon">☁️</div>
+            <h3>Cloud Computing Project</h3>
+            <p>
+                Academic project based on cloud services
+                and deployment models.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <div class="project-icon">📊</div>
+            <h3>Data Science Project</h3>
+            <p>
+                Beginner-level project involving data
+                processing and analysis.
+            </p>
+        </div>
+
+        <div class="project-card">
+            <div class="project-icon">🤖</div>
+            <h3>IoT Project</h3>
+            <p>
+                Academic project based on sensors,
+                communication and smart systems.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CERTIFICATES -->
+
+<section id="certificates">
+
+    <h2 class="section-title">
+        My <span>Certificates</span>
+    </h2>
+
+    <div class="certificates">
+
+        <div class="certificate">
+            <h3>Java Programming</h3>
+            <p>
+                Certificate for completing a Java programming course.
+            </p>
+        </div>
+
+        <div class="certificate">
+            <h3>Programming Fundamentals</h3>
+            <p>
+                Certificate for completing programming fundamentals.
+            </p>
+        </div>
+
+        <div class="certificate">
+            <h3>Web Development</h3>
+            <p>
+                Certificate related to HTML and CSS development.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ACHIEVEMENTS -->
+
+<section id="achievements">
+
+    <h2 class="section-title">
+        Achievements & <span>Strengths</span>
+    </h2>
+
+    <div class="achievement-box">
+
+        <div class="achievement">
+            🏆 Completed programming courses and certifications.
+        </div>
+
+        <div class="achievement">
+            💡 Continuously learning new technologies.
+        </div>
+
+        <div class="achievement">
+            🤝 Good communication and teamwork skills.
+        </div>
+
+        <div class="achievement">
+            👨💼 Leadership and team coordination skills.
+        </div>
+
+        <div class="achievement">
+            💻 Interest in software and web development.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <h2 class="section-title">
+        Contact <span>Me</span>
+    </h2>
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+
+            <h2>Let's Connect</h2>
+
+            <p>
+                Feel free to contact me for academic projects,
+                collaboration and professional opportunities.
+            </p>
+
+            <p>
+                <strong>Email:</strong><br>
+                your-email@example.com
+            </p>
+
+            <p>
+                <strong>Phone:</strong><br>
+                +91 XXXXX XXXXX
+            </p>
+
+            <p>
+                <strong>Location:</strong><br>
+                Your City, India
+            </p>
+
+        </div>
+
+
+        <form>
+
+            <input
+                type="text"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Your Email"
+                required
+            >
+
+            <input
+                type="text"
+                placeholder="Subject"
+            >
+
+            <textarea
+                placeholder="Write your message..."
+            ></textarea>
+
+            <button class="btn" type="submit">
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="social">
+
+        <a href="#" target="_blank">
+            LinkedIn
+        </a>
+
+        <a href="#" target="_blank">
+            GitHub
+        </a>
+
+        <a href="mailto:your-email@example.com">
+            Email
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Student Portfolio | All Rights Reserved
+    </p>
+
+    <p>
+        Designed with HTML & CSS
+    </p>
+
+</footer>
+
+</body>
+</html>
